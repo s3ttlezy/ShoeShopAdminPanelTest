@@ -52,7 +52,7 @@ function _createModal(options) {
 }
 
 /*
-* onClose() :void
+* onClose() :void +
 * onOpen() :void
 * beforeClose() :boolean || true - Закрывается, false - не закрывается
 * ------------------
@@ -79,6 +79,9 @@ $.modal = function (options) {
       setTimeout(() => {
         $modal.classList.remove("hiding")
         closing = false
+        if (typeof options.onClose === "function") {
+          options.onClose()
+        }
       }, ANIMATION_SPEED)
     },
   }
